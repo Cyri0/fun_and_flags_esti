@@ -7,17 +7,11 @@ function App() {
   const [selectedRegion, setSelectedRegion] = useState(regions[0])
   const [textSearch, setTextSearch] = useState("")
 
-  const [isDarkMode, setIsDarkMode] = useState((new Date()).getHours() >= 18) 
-
   useEffect(() => {
     fetch("data.json")
       .then(res => res.json())
       .then(data => setCountries(data))
   }, [])
-
-  useEffect(()=>{
-    document.body.className = isDarkMode ? "dark" : "light"
-  }, [isDarkMode])
 
   const filterByRegion = (pre) => {
     if (selectedRegion === "All") return pre
@@ -37,10 +31,6 @@ function App() {
         <select onChange={(e) => setSelectedRegion(e.target.value)}>
           {regions.map(region => <option value={region}>{region}</option>)}
         </select>
-
-        <button onClick={()=>setIsDarkMode(prev => !prev)}>
-          {isDarkMode ? "🌛" : "🌞"}
-        </button>
       </div>
       <section className="cardWrapper">
         {countries && filterByName(filterByRegion(countries)).map(country => <CountryCard {...country} />)}
