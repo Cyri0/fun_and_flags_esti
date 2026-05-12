@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom"
 import App from "./App"
 import { useEffect, useState } from "react"
 import DetailPage from "./DetailPage"
@@ -16,6 +16,7 @@ const Routing = () => {
             <button onClick={()=>setIsDarkMode(prev => !prev)}>
           {isDarkMode ? "🌛" : "🌞"}
             </button>
+            <Link to=""><button>🏠</button></Link>
         </nav>
         <Routes>
             <Route path="" element={<App/>} />

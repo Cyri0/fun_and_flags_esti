@@ -22,8 +22,8 @@ const DetailPage = () => {
   if(!country) return <div>Loading...</div>
 
   return (
-    <div>
-        <img style={{ maxWidth: "min(500px, 80vw)"}} src={country.flag}/>
+    <div className="details">
+        <img src={country.flag}/>
         <h1>{country.name}</h1>
         <h2>{country.translations.hu}</h2>
         <div><strong>Population: </strong> {country.population}</div>
@@ -33,7 +33,7 @@ const DetailPage = () => {
         <div><strong>Region: </strong> {country.region}</div>
         <div><strong>Subregion: </strong> {country.subregion}</div>
         <hr />
-        {country.borders?.map(border => <Link to={"/detail/" + border}>{border}</Link>)}
+        <div className="linkWrapper">{country.borders?.map(border => <Link to={"/detail/" + border}>{border}</Link>)}</div>
     </div>
   )
 }
